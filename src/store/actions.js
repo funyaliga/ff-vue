@@ -5,7 +5,7 @@ import API from '@/services/API.js'
 const doAsync = (store, { api, type }) => {
 	// Send the pending flag. Useful for showing a spinner, etc  
 
-	store.commit(type.BASE, {
+	store.commit(`${type}`, {
 		type: type.PENDING, 
 		data: true,
 	})
@@ -15,14 +15,14 @@ const doAsync = (store, { api, type }) => {
 			// the call was successful! 
 			// commit the response and status code to the store. 
 			// we will write the actual mutation logic next. 
-			store.commit(type.BASE, {
+			store.commit(`${type}`, {
 				type: type.SUCCESS,
 				data: res,
 				statusCode: res.status,
 			})
 
 			// also sent pending to false, since the call is complete.             
-			store.commit(type.BASE, {
+			store.commit(`${type}`, {
 				type: type.PENDING, 
 				data: false,
 			})
@@ -30,12 +30,12 @@ const doAsync = (store, { api, type }) => {
 		.catch(error => {
 			// there was an error. Commit the status code to the store.
 			// we will write the mutation logic soon.
-			store.commit(type.BASE, {
+			store.commit(`${type}`, {
 				type: type.FAILURE,
 				statusCode: error.response.status,
 			})
 			// since the call is complete, sent pending to false.
-			store.commit(type.BASE, {
+			store.commit(`${type}`, {
 				type: type.PENDING,
 				data: false,
 			})

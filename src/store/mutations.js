@@ -36,7 +36,7 @@ const mutations = {
 		localStorage.setItem("x-auth-secret", JSON.stringify(state.secret))
 	},
 	
-	...C(types.TIMELINE.BASE, {
+	...C(types.TIMELINE, {
 		SUCCESS: (state, res) => {
 			state.timeline = res.data.data
 		}

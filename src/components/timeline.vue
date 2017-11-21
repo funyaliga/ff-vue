@@ -26,10 +26,10 @@ export default {
     },
 
     created() {
-        store.dispatch('timeline', {})
+        // 获取时间轴
+        // store.dispatch('timeline', {})
     },
 
-    
 
     methods: {
         

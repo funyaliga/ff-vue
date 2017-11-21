@@ -5,6 +5,7 @@
             <p>{{ userInfo.name }}</p>
 
             <CTimeline></CTimeline>
+            <CPost></CPost>
         </div>
         <div v-else>
             <router-link to="/login">登录</router-link>
@@ -16,6 +17,7 @@
 import { mapState, mapActions, mapGetters } from 'vuex'
 
 import CTimeline from '@/components/timeline.vue';
+import CPost from '@/components/post.vue';
 
 export default {
     name: "index",
@@ -31,6 +33,7 @@ export default {
 
     components: {
         CTimeline,
+        CPost,
     }
 };
 </script>
