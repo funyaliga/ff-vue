@@ -3,7 +3,6 @@
         timeline
         <ul v-for="(v, i) in timeline" :key="v.id" class="floor">
             <li>
-                <a>{{ v.user.name }}</a>
                 <div>{{ v.text }}</div>
             </li>
         </ul>

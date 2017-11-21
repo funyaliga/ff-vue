@@ -1,8 +1,32 @@
 import * as types from './types.js'
 
-export default {
+const C = (type, callback) => {
+	return {
+		[type] (state, basedata) {
+			switch (basedata.type) {
+				case types[type].PENDING:
+					state.loading = basedata.data
+					if (callback.PENDING) {
+						return callback.PENDING(state, basedata.data)
+					}
+					break
+				case types[type].SUCCESS:
+					if (callback.SUCCESS) {
+						return callback.SUCCESS(state, basedata.data)
+					}
+					break
+				case types[type].FAILURE:
+					if (callback.FAILURE) {
+						return callback.FAILURE(state, basedata.data)
+					}
+					break
+			}	
+		}
+	}
+}
+
+const mutations = {
 	[types.LOGIN](state, data){
-		console.log('in')
 		state.userInfo = data.userInfo
 		state.token = data['x-auth-token']
 		state.secret = data['x-auth-secret']
@@ -11,18 +35,12 @@ export default {
 		localStorage.setItem("x-auth-token", JSON.stringify(state.token))
 		localStorage.setItem("x-auth-secret", JSON.stringify(state.secret))
 	},
-	[types.TO_LOGIN](state, { oa_link }){
-		location.href = `${oa_link}http://${location.host}/login`
-		// state.isLogin = true;
-		// state.route = {
-		//     path: '/login_callback',
-		//     query: null,
-		//     params: null
-		// }
-		// state.route.path = '/login_callback'
-	},
-
-	[types.TIMELINE](state, data) {
-		state.timeline = data
-	},
+	
+	...C(types.TIMELINE.BASE, {
+		SUCCESS: (state, res) => {
+			state.timeline = res.data.data
+		}
+	})
 }
+
+export default mutations

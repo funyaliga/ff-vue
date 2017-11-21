@@ -24,8 +24,8 @@ export default {
     data() {
         return {
             forms: {
-                username: 'ping88914@hotmail.com',
-                password: 'fanpyadizleron9',
+                username: '',
+                password: '',
             }
         }
     },

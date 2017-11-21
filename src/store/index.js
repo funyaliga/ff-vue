@@ -17,6 +17,7 @@ let store = new Vuex.Store({
         login: localStorage.getItem('x-auth-secret') && localStorage.getItem('x-auth-token') ? true : false,
         userInfo: JSON.parse(localStorage.getItem('userInfo')) || {},
         timeline: {},
+        loading: false,
     },
     getters,
     actions,
