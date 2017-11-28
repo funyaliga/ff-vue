@@ -4,7 +4,6 @@ import API from '@/services/API.js'
 
 const doAsync = (store, { api, type }) => {
 	// Send the pending flag. Useful for showing a spinner, etc  
-
 	store.commit(`${type}`, {
 		type: type.PENDING, 
 		data: true,
@@ -60,5 +59,12 @@ export default {
 			api: API.timeline(data),
 			type: types.TIMELINE
 		})
-	}
+	},
+
+	post: (store, data) => {
+		doAsync(store, {
+			api: API.post(data),
+			type: types.POST
+		})
+	},
 }

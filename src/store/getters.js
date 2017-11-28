@@ -5,4 +5,5 @@ export default {
 	token: state => state.token,
 	secret: state => state.secret,
 	loading: state => state.loading,
+	isPost: state => state.isPost,
 }

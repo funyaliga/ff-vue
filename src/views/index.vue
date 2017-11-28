@@ -4,8 +4,9 @@
             <img :src="userInfo.profile_image_url">
             <p>{{ userInfo.name }}</p>
 
-            <CTimeline></CTimeline>
             <CPost></CPost>
+            
+            <CTimeline></CTimeline>
         </div>
         <div v-else>
             <router-link to="/login">登录</router-link>

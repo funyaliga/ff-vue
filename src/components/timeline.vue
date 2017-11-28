@@ -30,7 +30,6 @@ export default {
         // store.dispatch('timeline', {})
     },
 
-
     methods: {
         
     },

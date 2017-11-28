@@ -1,5 +1,8 @@
 <template>
-    <div>test</div>
+    <form @submit.prevent="submit">
+        <textarea v-model="forms.status"></textarea>
+        <button>提交</button>
+    </form>
 </template>
 
 <script>
@@ -11,6 +14,9 @@ export default {
 
     data() {
         return {
+            forms: {
+                status: ''
+            }
         }
     },
     computed: {
@@ -22,7 +28,10 @@ export default {
 
 
     methods: {
-        
+        ...mapActions(['post']),
+        submit() {
+            this.post(this.forms)
+        }
     },
 
     watch: {

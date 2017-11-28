@@ -40,7 +40,18 @@ const mutations = {
 		SUCCESS: (state, res) => {
 			state.timeline = res.data.data
 		}
-	})
+	}),
+
+	...C(types.POST, {
+		PENDING: (state, res) => {
+			if (res.data) {
+				state.post = false
+			}
+		},
+		SUCCESS: (state, res) => {
+			state.post = true
+		}
+	}),
 }
 
 export default mutations

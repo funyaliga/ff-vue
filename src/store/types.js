@@ -22,5 +22,5 @@ const createAsyncMutation = (type) => {
 }
 
 export const LOGIN = 'LOGIN'
-export const TO_LOGIN = 'TO_LOGIN'
 export const TIMELINE = createAsyncMutation('TIMELINE')
+export const POST = createAsyncMutation('POST')
